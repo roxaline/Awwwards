@@ -7,11 +7,11 @@ class Image(models.Model):
     image = models.ImageField(upload_to = "images/",null = True)
     user = models.ForeignKey(User, on_delete = models.CASCADE, null = True)
     image_name = models.CharField(max_length = 30,null = True)
-    likes = models.IntegerField(default=0)
-    image_caption = models.TextField(null = True)
+    link = models.CharField(max_length = 50,null = True)
+    # image_caption = models.TextField(null = True)
     pub_date = models.DateTimeField(auto_now_add=True,null=True)
     # profile = models.ForeignKey(Profile, null=True) 
-    comments = models.IntegerField(default=0)
+    description = models.CharField(max_length = 60,null = True)
 
 
     def __str__(self):

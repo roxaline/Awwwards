@@ -2,14 +2,14 @@
 
 {% block content %}
 <div class="container top"style="background:white;font-size: 20px" >
-  <div class="panel panel-heading" style="background:maroon">
-    <h1 style="color:white;font-size: 30px; font-style:normal;font-weight: bolder" class="text-center"> Insta-app</h1>
+  <div class="panel panel-heading" style="background:blue">
+    <!-- <h1 style="color:white;font-size: 30px; font-style:normal;font-weight: bolder" class="text-center"></h1> -->
   </div>
   <div class="container">
       <div class="jumbotron">
           <div class="row">
               <div class="well">
-                  <h2 style="color:maroon; text-align: center">My recent images</h2>
+                  <h2 style="color:maroon; text-align: center">Recent awwwards</h2>
               </div>
                   {% for image in image_posts %}
                   <div class="home-images" style="color:black">
@@ -25,9 +25,9 @@
                           </li>
                           <li class="list-inline-item">
                           {% autoescape on %}
-                              <p>{{image.image_caption|safe}} </p>
-                              <p>comments:<button class="btn btn-primary">{{image.comments|safe}} </button></p>
-                              <p>likes:<button class="btn btn-primary">{{image.likes|safe}} </button></p>
+                              <p>{{image.image_name|safe}} </p>
+                              <p>description:{{image.description|safe}}</p>
+                              <p>link:<a href="{{image.link|safe}}">{{image.link|safe}}</a></p>
                           {% endautoescape %}
                           </li>
                       </ul>
@@ -35,7 +35,7 @@
                   </div>
               
                   {% empty %}
-                  <h3 style="text-align:center; color: black">No images to be displayed</h3>
+                  <h3 style="text-align:center; color: black">There is no website</h3>
                   {% endfor %}
               </div>
               

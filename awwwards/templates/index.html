@@ -6,34 +6,34 @@
     <!-- <h1 style="color:white;font-size: 30px; font-style:normal;font-weight: bolder" class="text-center"></h1> -->
   </div>
   <div class="container">
-      <div class="jumbotron">
+      <div class="jumbotron" style="text-align:center">
           <div class="row">
               <div class="well">
-                  <h2 style="color:maroon; text-align: center">Recent awwwards</h2>
+                  <h2 style="color:maroon; text-align: center; font-style: italic;font-size: 50px">Recent awwwards</h2>
               </div>
                   {% for image in image_posts %}
-                  <div class="home-images" style="color:black">
+                    <div class="home-images" style="color:black">
                       <p class="home-text">
                         <a href="{% url 'profile' %}">{{image.profile.username}}</a>
                       </p>
-                  <div class="col-md-4" style="margin-bottom: 20px" >
-                      <img src="{{image.image.url}}" style="width: 200px; height: 200px;" alt="Image">
-                    
                       <ul class="list-inline home-list">
                           <li class="list-inline-item">
+                    <div class="col-md-6" style="margin-bottom: 20px" >
+                      <img src="{{image.image.url}}" style="width: 200px; height: 200px;" alt="Image">
+                    
                             <a href="{% url 'profile' %}">{{image.profile.username}}</a>
-                          </li>
-                          <li class="list-inline-item">
-                          {% autoescape on %}
-                              <p>{{image.image_name|safe}} </p>
-                              <p>description:{{image.description|safe}}</p>
-                              <p>link:<a href="{{image.link|safe}}">{{image.link|safe}}</a></p>
-                          {% endautoescape %}
-                          </li>
-                      </ul>
-                      
-                  </div>
-              
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                    <div class="col-md-6">
+                        {% autoescape on %}
+                            <p style="font-size:30px; font-weight:bold">{{image.image_name|safe}} </p>
+                            <p>description:{{image.description|safe}}</p>
+                            <p>link:<a href="{{image.link|safe}}">{{image.link|safe}}</a></p>
+                        {% endautoescape %}
+                    </div>
+                    </li>
+                    </ul> 
                   {% empty %}
                   <h3 style="text-align:center; color: black">There is no website</h3>
                   {% endfor %}

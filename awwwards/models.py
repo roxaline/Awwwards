@@ -32,11 +32,20 @@ class Image(models.Model):
     def get_image(cls, id):
         image = cls.objects.get(id=id)
         return image
+    
+    @classmethod
+    def search_by_image_name(cls,search_term):
+        awwwards = cls.objects.filter(image_name__icontains=search_term)
+        return awwwards
+
+		
 
     
 
     class Meta:
     	ordering = ['-pub_date']
+	
+	
 
 
 class Profile(models.Model):
@@ -54,11 +63,7 @@ class Profile(models.Model):
 	def save_profile(self):
 		self.save()
 
-	@classmethod
-	def search_by_name(cls,search_term):
-		photos = cls.objects.filter(name__icontains = search_term)
-		return photos
-
+	
 class Comment(models.Model):
 	user = models.ForeignKey(User, on_delete = models.CASCADE, null = True)
 	image = models.ForeignKey(Image,on_delete = models.CASCADE, null = True,related_name='comment')

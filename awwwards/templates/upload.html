@@ -2,12 +2,12 @@
 {% block content %}
 {{block.super}}
   
-<title>{{image_id.username}}</title>
+<title>{{project_id.username}}</title>
 <div class="container">
 <div class="row">
 <div class="col-md-12">
     {%for profile in profile%}
-<img src={{profile.profile_image.url}} style="width: 300px; height: 300px; border-radius: 50%; margin-top: 100px;margin-left: 100px ">
+<img src={{profile.profile_project.url}} style="width: 300px; height: 300px; border-radius: 50%; margin-top: 100px;margin-left: 100px ">
 <div class="well" style="float: right; margin-top: 170px; margin-right: 300px">
 <div class="">
 <h5 style="float: left; margin-left: 20px; font-size: 30px; font-weight: bold; margin-top: -1px">
@@ -22,12 +22,12 @@
 
 <img src="{{profile.profile.url}}" class="img-responsive" alt="">
 </ul>
-<h3>{{image_id.username}}{{image_id.image_caption}}</h3>
+<h3>{{project_id.username}}{{project_id.project_caption}}</h3>
 
 {%endfor%}
 <div class="col-md-6">
-<h1>{{image_id.username}}</h1>
-<a href="{{image_id.url}}" class="profile-link">{{image_id.url}}</a></div>
+<h1>{{project_id.username}}</h1>
+<a href="{{project_id.url}}" class="profile-link">{{project_id.url}}</a></div>
 </div>
 
 </div>

@@ -11,9 +11,14 @@ from rest_framework import status
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
+    current_user = request.user
     title = 'Awwwards'
     image_posts = Image.objects.all()
     # comments = Comment.objects.all()
+    id=None
+    for image in image_posts:
+        id=image.id
+
 
     print(image_posts)
     return render(request, 'index.html', {"title":title,"image_posts":image_posts})
@@ -23,7 +28,6 @@ def index(request):
 def comment(request,id):
 	
 	post = get_object_or_404(Image,id=id)	
-	current_user = request.user
 	print(post)
 
 	if request.method == 'POST':
@@ -59,10 +63,10 @@ def single_image(request,image_id):
 def search_results(request):
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_images = Image.search__by_name(search_term)
+        searched_images = Image.search_by_image_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search_image.html',{"message":message,"images": searched_images})
+        return render(request, 'search_images.html',{"message":message,"images": searched_images})
 
     else:
         message = "You haven't searched for any term"

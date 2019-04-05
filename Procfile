@@ -1,0 +1,1 @@
+web: gunicorn awaap.wsgi
